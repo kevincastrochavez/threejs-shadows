@@ -65,8 +65,24 @@ scene.add(spotLight);
 scene.add(spotLight.target);
 
 const spotLightCameraHelper = new THREE.CameraHelper(spotLight.shadow.camera);
-// spotLightCameraHelper.visible = false;
+spotLightCameraHelper.visible = false;
 scene.add(spotLightCameraHelper);
+
+// POINT LIGHT
+
+const pointLight = new THREE.PointLight(0xffffff, 0.3);
+pointLight.castShadow = true;
+pointLight.position.set(-1, 1, 0);
+pointLight.shadow.mapSize.width = 1024;
+pointLight.shadow.mapSize.height = 1024;
+pointLight.shadow.camera.near = 0.01;
+pointLight.shadow.camera.far = 5;
+
+scene.add(pointLight);
+
+const pointLightCameraHelper = new THREE.CameraHelper(pointLight.shadow.camera);
+// pointLightCameraHelper.visible = false;
+scene.add(pointLightCameraHelper);
 
 /**
  * Materials
